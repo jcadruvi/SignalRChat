@@ -18,9 +18,9 @@
             $("#content").append("<div>" + data.Name + ': ' + data.Message + "</div>");
         });
 
-        myConnection.error(function (error) {
-            console.warn(error);
-        });
+        //myConnection.error(function (error) {
+        //    console.warn(error);
+        //});
         myConnection.start()
         .promise()
         .done(function () {
@@ -28,7 +28,8 @@
                 var myName = $("#name").val();
                 var myMessage = $("#field").val();
                 myConnection.send(JSON.stringify({ name: myName, message: myMessage }));
-            })
+            });
         });
+        
     });
 </script>
