@@ -11,6 +11,8 @@ namespace SignalR
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            RouteTable.Routes.MapHubs();
+            RouteTable.Routes.MapConnection<Chat.ChatConnection>("chat", "chat/");
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
