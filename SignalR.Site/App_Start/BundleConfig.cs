@@ -39,7 +39,8 @@ namespace SignalR.App_Start
                          "~/Scripts/knockout-kendo.js",
                          "~/Scripts/jquery.validate.js",
                          "~/Scripts/jquery.validate.unobtrusive.js",
-                         "~/Scripts/jquery.unobtrusive-ajax.js"));
+                         "~/Scripts/jquery.unobtrusive-ajax.js",
+                         "~/Scripts/jquery.signalR-1.1.2.js"));
         }
     }
 }

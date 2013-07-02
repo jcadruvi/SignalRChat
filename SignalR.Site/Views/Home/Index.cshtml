@@ -4,30 +4,31 @@
 }
 <div id="content" style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;">
 </div>
-<input id="field" type="text" />
-<input id="send" type="button" value="Send" />
-<script src="@Url.Content("~/Scripts/jquery-1.9.1.js")"></script>
-<script src="@Url.Content("~/Scripts/socket.io.min.js")"></script>
+<div>
+    <input id="name" type="text" />
+</div>
+<div>
+    <input id="field" type="text" />
+    <input id="send" type="button" value="Send" />
+</div>
 <script>
-    window.onload = function () {
-        var messages = [];
-        var socket = io.connect('http://localhost:8080');
-        var field = $("#field");
-        var content = $("#content");
-        socket.on('message', function (data) {
-            if (data.message) {
-                messages.push(data.message);
-                var html = '';
-                for (var i = 0; i < messages.length; i++) {
-                    html += messages[i] + '<br/>';
-                }
-                content.html(html);
-            } else {
-                console.log("There is a problem:", data);
-            }
+    $(function () {
+        var myConnection = $.connection("/chat");
+        myConnection.received(function (data) {
+            $("#content").append("<div>" + data.Name + ': ' + data.Message + "</div>");
         });
-        $("#send").click(function () {
-            socket.emit('send', { message: field.val() });
+
+        myConnection.error(function (error) {
+            console.warn(error);
         });
-    }
+        myConnection.start()
+        .promise()
+        .done(function () {
+            $("#send").click(function () {
+                var myName = $("#name").val();
+                var myMessage = $("#field").val();
+                myConnection.send(JSON.stringify({ name: myName, message: myMessage }));
+            })
+        });
+    });
 </script>
