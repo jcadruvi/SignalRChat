@@ -2,5 +2,32 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Index</h2>
+<div id="content" style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;">
+</div>
+<input id="field" type="text" />
+<input id="send" type="button" value="Send" />
+<script src="@Url.Content("~/Scripts/jquery-1.9.1.js")"></script>
+<script src="@Url.Content("~/Scripts/socket.io.min.js")"></script>
+<script>
+    window.onload = function () {
+        var messages = [];
+        var socket = io.connect('http://localhost:8080');
+        var field = $("#field");
+        var content = $("#content");
+        socket.on('message', function (data) {
+            if (data.message) {
+                messages.push(data.message);
+                var html = '';
+                for (var i = 0; i < messages.length; i++) {
+                    html += messages[i] + '<br/>';
+                }
+                content.html(html);
+            } else {
+                console.log("There is a problem:", data);
+            }
+        });
+        $("#send").click(function () {
+            socket.emit('send', { message: field.val() });
+        });
+    }
+</script>
