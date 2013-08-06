@@ -13,14 +13,13 @@ namespace SignalR.Controllers
 
         public ActionResult Index()
         {
-            var vm = new Chat.ChatData();
-            return View(vm);
+            return View();
         }
 
         public ActionResult ChatR()
         {
             var vm = new Chat.ChatData();
-            return View(vm);
+            return View("Index", vm);
         }
 
     }

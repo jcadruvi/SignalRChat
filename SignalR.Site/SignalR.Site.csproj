@@ -222,6 +222,8 @@
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\json2.js" />
+    <Content Include="Scripts\json2.min.js" />
     <Content Include="Scripts\kendo.web.min.js" />
     <Content Include="Scripts\knockout-2.2.1.min.js" />
     <Content Include="Scripts\knockout-kendo.js" />
