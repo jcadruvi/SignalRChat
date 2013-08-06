@@ -17,5 +17,11 @@ namespace SignalR.Controllers
             return View(vm);
         }
 
+        public ActionResult ChatR()
+        {
+            var vm = new Chat.ChatData();
+            return View(vm);
+        }
+
     }
 }
