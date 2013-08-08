@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SignalR.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,7 +19,7 @@ namespace SignalR.Controllers
 
         public ActionResult ChatR()
         {
-            var vm = new Chat.ChatData();
+            var vm = new ChatMessage();
             return View("Index", vm);
         }
 

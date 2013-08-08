@@ -2,6 +2,7 @@
 using Microsoft.AspNet.SignalR;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using SignalR.Model;
 
 
 namespace SignalR.Chat
@@ -13,23 +14,23 @@ namespace SignalR.Chat
         protected override Task OnConnected(IRequest request, string connectionId)
         {
             _clients.Add(connectionId, string.Empty);
-            ChatData chatData = new ChatData("Server", "A new user has joined the room.");
-            return Connection.Broadcast(chatData);
+            ChatMessage chatMessage = new ChatMessage("Server", "A new user has joined the room.");
+            return Connection.Broadcast(chatMessage);
         }
 
         protected override Task OnDisconnected(IRequest request, string connectionId)
         {
             string name = _clients[connectionId];
-            ChatData chatData = new ChatData("Server", string.Format("{0} has left the room.", name));
+            ChatMessage chatMessage = new ChatMessage("Server", string.Format("{0} has left the room.", name));
             _clients.Remove(connectionId);
-            return Connection.Broadcast(chatData);
+            return Connection.Broadcast(chatMessage);
         }
 
         protected override Task OnReceived(IRequest request, string connectionId, string data)
         {
-            ChatData chatData = JsonConvert.DeserializeObject<ChatData>(data);
-            _clients[connectionId] = chatData.Name;
-            return Connection.Broadcast(chatData);
+            ChatMessage chatMessage = JsonConvert.DeserializeObject<ChatMessage>(data);
+            _clients[connectionId] = chatMessage.Name;
+            return Connection.Broadcast(chatMessage);
         }
     }
 }
