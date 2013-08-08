@@ -2,12 +2,13 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div id="content" style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;">
+
+<div data-bind="visible: showName">
+    <div>Please enter your name and then log in:</div>
+    <div><input data-bind="value: name" type="text" /><input data-bind="click: onLogInClick" type="button" value="Log In"/></div>
 </div>
-<div>
-    <input data-bind="value: name" type="text" />
-</div>
-<div>
+<div data-bind="visible: showChat">
+    <div id="content" style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;"></div>
     <input data-bind="value: message" type="text" />
     <input id="send" type="button" value="Send" />
 </div>

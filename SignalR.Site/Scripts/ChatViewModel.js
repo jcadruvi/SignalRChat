@@ -5,6 +5,7 @@
     self.name = ko.observable();
     self.showChat = ko.observable();
     self.showName = ko.observable();
+    self.showName(true);
 
     var myConnection = $.connection("/chat");
     myConnection.received(function (data) {
@@ -24,6 +25,11 @@
             myConnection.send(JSON.stringify({ name: myName, message: myMessage }));
         });
     });
+
+    self.onLogInClick = function () {
+        self.showChat(true);
+        self.showName(false);
+    };
 
     return self;
 }
