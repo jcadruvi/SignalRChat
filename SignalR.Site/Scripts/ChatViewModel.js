@@ -1,6 +1,11 @@
 ﻿function chatViewModel() {
     self = {};
 
+    self.message = ko.observable();
+    self.name = ko.observable();
+    self.showChat = ko.observable();
+    self.showName = ko.observable();
+
     var myConnection = $.connection("/chat");
     myConnection.received(function (data) {
         $("#content").append("<div>" + data.Name + ': ' + data.Message + "</div>");
@@ -14,8 +19,8 @@
     .promise()
     .done(function () {
         $("#send").click(function () {
-            var myName = $("#name").val();
-            var myMessage = $("#field").val();
+            var myName = self.name();
+            var myMessage = self.message();
             myConnection.send(JSON.stringify({ name: myName, message: myMessage }));
         });
     });

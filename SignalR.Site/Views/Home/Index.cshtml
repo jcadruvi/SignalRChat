@@ -5,13 +5,14 @@
 <div id="content" style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;">
 </div>
 <div>
-    <input id="name" type="text" />
+    <input data-bind="value: name" type="text" />
 </div>
 <div>
-    <input id="field" type="text" />
+    <input data-bind="value: message" type="text" />
     <input id="send" type="button" value="Send" />
 </div>
 <script src="~/Scripts/ChatViewModel.js"></script>
 <script>
     var viewModel = chatViewModel();
+    ko.applyBindings(viewModel);
 </script>
