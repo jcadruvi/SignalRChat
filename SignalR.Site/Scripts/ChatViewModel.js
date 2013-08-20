@@ -1,7 +1,7 @@
 ﻿function chatViewModel() {
     self = {};
 
-    //var _connection = null;
+    var _connectionProxy = null;
 
     self.content = ko.observable();
     self.content("");
@@ -14,23 +14,24 @@
     self.onSendClick = function () {
         var myName = self.name();
         var myMessage = self.message();
-        //_connection.send(JSON.stringify({ name: myName, message: myMessage }));
+        _connectionProxy.invoke('sendMessage', myName, myMessage);
         self.message(null);
     }
 
     self.onLogInClick = function () {
         self.showChat(true);
         self.showName(false);
-        //_connection = $.connection("/chat");
-        //_connection.received(function (data) {
-        //    self.content(self.content() + ("<div>" + data.Name + ': ' + data.Message + "</div>"));
-        //});
+        var connection = $.hubConnection();
+        _connectionProxy = connection.createHubProxy('chatHub');
+        _connectionProxy.on('sendMessage', function (name, message) {
+            self.content(self.content() + ("<div>" + name + ': ' + message + "</div>"));
+        });
 
         //_connection.error(function (error) {
         //    console.warn(error);
         //});
 
-        //_connection.start()
+        connection.start()
     };
 
     return self;

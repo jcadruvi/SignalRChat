@@ -41,8 +41,7 @@ namespace SignalR.App_Start
                          "~/Scripts/jquery.validate.unobtrusive.js",
                          "~/Scripts/jquery.unobtrusive-ajax.js",
                          "~/Scripts/json2.js",
-                         "~/Scripts/jquery.signalR-1.1.2.js",
-                         "~/signalr/hubs"));
+                         "~/Scripts/jquery.signalR-1.1.2.js"));
         }
     }
 }
