@@ -7,9 +7,9 @@ using SignalR.Model;
 
 namespace SignalR.Chat
 {
-    public class ChatConnection : PersistentConnection
+    public class ChatConnection //: PersistentConnection
     {
-        private readonly Dictionary<string, string> _clients = new Dictionary<string, string>();
+        /*private readonly Dictionary<string, string> _clients = new Dictionary<string, string>();
 
         protected override Task OnConnected(IRequest request, string connectionId)
         {
@@ -31,6 +31,6 @@ namespace SignalR.Chat
             ChatMessage chatMessage = JsonConvert.DeserializeObject<ChatMessage>(data);
             _clients[connectionId] = chatMessage.Name;
             return Connection.Broadcast(chatMessage);
-        }
+        }*/
     }
 }
