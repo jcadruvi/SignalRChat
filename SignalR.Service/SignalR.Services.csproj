@@ -39,8 +39,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="IUserService.cs" />
+    <Compile Include="UserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SignalR.Model\SignalR.Model.csproj">
+      <Project>{2f8fc5a2-6d77-4f21-b8b8-c44bed21ca45}</Project>
+      <Name>SignalR.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SignalR.Repositores\SignalR.Repositories.csproj">
+      <Project>{3f5edb3b-3cf6-4ac5-b990-35e013f7ff9f}</Project>
+      <Name>SignalR.Repositories</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
