@@ -28,6 +28,12 @@ namespace SignalR.App_Start
 						 "~/Content/kendo.mobitor.css",
                          "~/Content/Site.css"));
 
+            var css = new Bundle("~/Content/chat.bundle.less")
+                        .Include("~/Content/chat.less");
+            css.Transforms.Add(new LessTransform());
+            css.Transforms.Add(new CssMinify());
+            bundles.Add(css);
+
             bundles.Add(new ScriptBundle("~/Scripts/layout.bundle.javascript")
                 .Include("~/Scripts/jquery-1.9.1.js",
                          "~/Scripts/knockout-2.2.1.min.js",

@@ -3,6 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div data-bind="kendoGrid: { columns: usersGridOptions.columns, data: usersData }"></div>
 <div data-bind="visible: showName">
     <div>Please enter your name and then log in:</div>
     <div><input data-bind="value: name" type="text" /><input data-bind="click: onLogInClick" type="button" value="Log In"/></div>
@@ -12,9 +13,7 @@
     <input data-bind="value: message" type="text" />
     <input data-bind="click: onSendClick" id="send" type="button" value="Send" />
 </div>
-<div data-bind="kendoGrid: { columns: usersGridOptions.columns, data: usersData }">
 
-</div>
 <script src="~/Scripts/chatViewModel.js"></script>
 <script>
     var viewModel = chatViewModel();
