@@ -11,14 +11,14 @@
     self.showName = ko.observable();
     self.showName(true);
     self.usersData = ko.observableArray();
-    self.userGridOptions({
+    self.usersGridOptions = {
         columns: [
             {
                 field: "Name",
                 title: "Name",
                 width: "70px"
             }]
-    });
+    };
     
     self.onSendClick = function () {
         _connectionProxy.invoke('sendMessage', self.name(), self.message());

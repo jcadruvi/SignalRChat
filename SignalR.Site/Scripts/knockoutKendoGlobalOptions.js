@@ -1,8 +1,5 @@
 ﻿ko.bindingHandlers.kendoGrid.options = {
     autoBind: true,
-    change: function () {
-        viewModel.onStoreGridChanged();
-    },
     filterable: false,
     groupable: false,
     height: "300px",
