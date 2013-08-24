@@ -278,6 +278,10 @@
       <Project>{2f8fc5a2-6d77-4f21-b8b8-c44bed21ca45}</Project>
       <Name>SignalR.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SignalR.Service\SignalR.Services.csproj">
+      <Project>{a9224298-f77f-43a1-bcbf-1d8e41a60b3b}</Project>
+      <Name>SignalR.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
