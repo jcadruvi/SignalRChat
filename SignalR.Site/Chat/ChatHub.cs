@@ -21,7 +21,7 @@ namespace SignalR.Chat
         {
             User user = new User(Context.ConnectionId, Guid.NewGuid(), name);
             _userService.AddUser(user);
-            Clients.Others.addUser(user);
+            Clients.Others.addUser(user.Id, user.Name);
             var users = (from u in _userService.GetUsers()
                          select new {
                             u.Id,

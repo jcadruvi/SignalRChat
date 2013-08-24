@@ -36,7 +36,8 @@ namespace SignalR.App_Start
                          "~/Scripts/ko.gridBinding.js",
                 // I had to include the min version of kendo.web because I was getting an error if I let microsoft minify the file. 
                          "~/Scripts/kendo.web.min.js",
-                         "~/Scripts/knockout-kendo.js",
+                         "~/Scripts/knockout-kendo.min.js",
+                         "~/Scripts/knockoutKendoGlobalOptions.js",
                          "~/Scripts/jquery.validate.js",
                          "~/Scripts/jquery.validate.unobtrusive.js",
                          "~/Scripts/jquery.unobtrusive-ajax.js",

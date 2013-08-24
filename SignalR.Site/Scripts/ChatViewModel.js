@@ -10,11 +10,18 @@
     self.showChat = ko.observable();
     self.showName = ko.observable();
     self.showName(true);
+    self.usersData = ko.observableArray();
+    self.userGridOptions({
+        columns: [
+            {
+                field: "Name",
+                title: "Name",
+                width: "70px"
+            }]
+    });
     
     self.onSendClick = function () {
-        var myName = self.name();
-        var myMessage = self.message();
-        _connectionProxy.invoke('sendMessage', myName, myMessage);
+        _connectionProxy.invoke('sendMessage', self.name(), self.message());
         self.message(null);
     }
 
@@ -26,12 +33,21 @@
         _connectionProxy.on('sendMessage', function (name, message) {
             self.content(self.content() + ("<div>" + name + ': ' + message + "</div>"));
         });
-
+        _connectionProxy.on('initializeUsers', function (users) {
+            self.usersData(users);
+            alert(self.usersData().length);
+        });
+        _connectionProxy.on('addUser', function (user) {
+            self.usersData.push(users);
+            alert(self.usersData().length);
+        });
         //_connection.error(function (error) {
         //    console.warn(error);
         //});
 
-        connection.start()
+        connection.start().done(function () {
+            _connectionProxy.invoke('addUser', self.name());
+        });
     };
 
     return self;

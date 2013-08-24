@@ -238,8 +238,9 @@
     <Content Include="Scripts\json2.min.js" />
     <Content Include="Scripts\kendo.web.min.js" />
     <Content Include="Scripts\knockout-2.2.1.min.js" />
-    <Content Include="Scripts\knockout-kendo.js" />
+    <Content Include="Scripts\knockout-kendo.min.js" />
     <Content Include="Scripts\knockout.mapping-latest.js" />
+    <Content Include="Scripts\knockoutKendoGlobalOptions.js" />
     <Content Include="Scripts\ko.gridBinding.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />

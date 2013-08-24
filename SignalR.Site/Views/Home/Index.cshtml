@@ -12,6 +12,9 @@
     <input data-bind="value: message" type="text" />
     <input data-bind="click: onSendClick" id="send" type="button" value="Send" />
 </div>
+<div data-bind="kendoGrid: { columns: userGridOptions.columns, data: userData }">
+
+</div>
 <script src="~/Scripts/chatViewModel.js"></script>
 <script>
     var viewModel = chatViewModel();
