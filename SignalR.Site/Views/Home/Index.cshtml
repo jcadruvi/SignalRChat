@@ -11,7 +11,7 @@
     <div><input data-bind="value: name" type="text" /><input data-bind="click: onLogInClick" type="button" value="Log In"/></div>
 </div>
 <div id="chatGrid" data-bind="kendoGrid: { columns: usersGridOptions.columns, data: usersData }, visible: showChat"></div>
-<div data-bind="visible: showChat">
+<div id="chatPanel" data-bind="visible: showChat">
     <div data-bind="html: content" style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;"></div>
     <input data-bind="value: message" type="text" />
     <input data-bind="click: onSendClick" id="send" type="button" value="Send" />
