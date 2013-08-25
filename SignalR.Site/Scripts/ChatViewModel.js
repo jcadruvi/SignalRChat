@@ -35,11 +35,9 @@
         });
         _connectionProxy.on('initializeUsers', function (users) {
             self.usersData(users);
-            alert(self.usersData().length);
         });
         _connectionProxy.on('addUser', function (user) {
             self.usersData.push(users);
-            alert(self.usersData().length);
         });
         //_connection.error(function (error) {
         //    console.warn(error);
