@@ -37,7 +37,7 @@
             self.usersData(users);
         });
         _connectionProxy.on('addUser', function (user) {
-            self.usersData.push(users);
+            self.usersData.push(user);
         });
         //_connection.error(function (error) {
         //    console.warn(error);
