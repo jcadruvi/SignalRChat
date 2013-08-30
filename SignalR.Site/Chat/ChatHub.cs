@@ -28,7 +28,7 @@ namespace SignalR.Chat
             Clients.Caller.initializeUsers(users);
             User user = new User(Context.ConnectionId, Guid.NewGuid(), name);
             _userService.AddUser(user);
-            Clients.Others.addUser(user.Id, user.Name);
+            Clients.Others.addUser(new { user.Id, user.Name });
         }
 
         public void SendMessage(string name, string message)
