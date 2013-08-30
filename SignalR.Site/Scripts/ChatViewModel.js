@@ -39,10 +39,6 @@
         _connectionProxy.on('addUser', function (user) {
             self.usersData.push(user);
         });
-        //_connection.error(function (error) {
-        //    console.warn(error);
-        //});
-
         connection.start().done(function () {
             _connectionProxy.invoke('addUser', self.name());
         });
