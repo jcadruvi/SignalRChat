@@ -10,9 +10,9 @@
     <div>Please enter your name and then log in:</div>
     <div><input data-bind="value: name" type="text" /><input data-bind="click: onLogInClick" type="button" value="Log In"/></div>
 </div>
-<div id="chatGrid" data-bind="kendoGrid: { columns: usersGridOptions.columns, data: usersData }, visible: showChat"></div>
+<div id="chatGrid" data-bind="kendoGrid: { change: usersGridOptions.change, columns: usersGridOptions.columns, data: usersData }, visible: showChat"></div>
 <div id="chatPanel" data-bind="visible: showChat">
-    <div data-bind="kendoTabStrip: {}" >
+    <div id="chatTab" >
         <ul>
             <li class="k-state-active">One</li>
         </ul>
@@ -27,5 +27,19 @@
 <script src="~/Scripts/chatViewModel.js"></script>
 <script>
     var viewModel = chatViewModel();
+    $('#chatTab').kendoTabStrip({
+        animation: {
+            // fade-out current tab over 1000 milliseconds
+            close: {
+                duration: 1000,
+                effects: "fadeOut"
+            },
+            // fade-in new tab over 500 milliseconds
+            open: {
+                duration: 500,
+                effects: "fadeIn"
+            }
+        }
+    });
     ko.applyBindings(viewModel);
 </script>

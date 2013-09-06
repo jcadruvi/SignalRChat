@@ -12,6 +12,15 @@
     self.showName(true);
     self.usersData = ko.observableArray();
     self.usersGridOptions = {
+        change: function () {
+            $("#chatTab").data("kendoTabStrip").append([{
+                text: 'Two',
+                encoded: false,                             
+                content: '<div style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;"></div>' + 
+                         '<input type="text" />' +
+                         '<input type="button" value="Send" />'
+            }]);
+        },
         columns: [
             {
                 field: "Name",
@@ -19,11 +28,13 @@
                 width: "70px"
             }]
     };
+
     
+
     self.onSendClick = function () {
         _connectionProxy.invoke('sendMessage', self.name(), self.message());
         self.message(null);
-    }
+    };
 
     self.onLogInClick = function () {
         self.showChat(true);
