@@ -45,7 +45,7 @@
             self.content(self.content() + ("<div>" + name + ': ' + message + "</div>"));
         });
         _connectionProxy.on('initializeUsers', function (users) {
-            if (users.length === 0) {
+            if (users.length === 1) {
                 self.usersData.push(users);
             }
             else if (users.length > 1) {
