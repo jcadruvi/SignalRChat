@@ -14,7 +14,7 @@
     self.usersGridOptions = {
         change: function () {
             $("#chatTab").data("kendoTabStrip").append([{
-                text: 'Two',
+                text: this.dataItem(this.select()).Name,
                 encoded: false,                             
                 content: '<div style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;"></div>' + 
                          '<input type="text" />' +
