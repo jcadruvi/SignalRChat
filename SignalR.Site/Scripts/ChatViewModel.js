@@ -3,25 +3,17 @@
 
     var _connectionProxy = null;
 
-    self.content = ko.observable();
-    self.content("");
+    self.content = ko.observable("");
     self.message = ko.observable();
     self.name = ko.observable();
+    self.tabStrip = null;
     self.showChat = ko.observable();
-    self.showName = ko.observable();
-    self.showName(true);
+    self.showName = ko.observable(true);
+    self.showTabs = ko.observable(false);
     self.usersData = ko.observableArray();
     self.usersGridOptions = {
         change: function () {
-            $("#chatTab").data("kendoTabStrip").insertBefore([{
-                text: this.dataItem(this.select()).Name,
-                encoded: false,                             
-                content: '<div style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;"></div>' + 
-                         '<input type="text" />' +
-                         '<input type="button" value="Send" />'
-            }],
-            $($("#chatTab").data("kendoTabStrip").items()[0]));
-            $("#chatTab").data("kendoTabStrip").select(0);
+            addTab(this.dataItem(this.select()).Name);
         },
         columns: [
             {
@@ -31,7 +23,28 @@
             }]
     };
 
-    
+    var addTab = function (tabName) {
+        if (self.tabStrip.data("kendoTabStrip").items().length == 0) {
+            self.tabStrip.data("kendoTabStrip").append([{
+                text: tabName,
+                encoded: false,
+                content: '<div style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;"></div>' +
+                         '<input type="text" />' +
+                         '<input type="button" value="Send" />'
+            }]);
+        } else {
+            self.tabStrip.data("kendoTabStrip").insertBefore([{
+                text: this.dataItem(this.select()).Name,
+                encoded: false,
+                content: '<div style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;"></div>' +
+                         '<input type="text" />' +
+                         '<input type="button" value="Send" />'
+            }],
+            $(self.tabStrip.data("kendoTabStrip").items()[0]));
+        }
+        self.tabStrip.data("kendoTabStrip").select(0);
+        self.showTabs(true);
+    };
 
     self.onSendClick = function () {
         _connectionProxy.invoke('sendMessage', self.name(), self.message());
