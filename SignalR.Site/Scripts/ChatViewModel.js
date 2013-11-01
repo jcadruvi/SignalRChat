@@ -45,7 +45,7 @@
         }
         self.tabStrip.data("kendoTabStrip").select(0);
         self.showTabs(true);
-        alert($('.sendButton').length);
+        alert($(self.tabStrip.data("kendoTabStrip").contentElement(0)).find('.sendButton').length);
     };
 
     self.onSendClick = function () {
