@@ -10,7 +10,7 @@
     <div>Please enter your name and then log in:</div>
     <div><input data-bind="value: name" type="text" /><input data-bind="click: onLogInClick" type="button" value="Log In"/></div>
 </div>
-<div id="chatGrid" data-bind="kendoGrid: { change: usersGridOptions.change, columns: usersGridOptions.columns, data: usersData }, visible: showChat"></div>
+<div id="chatGrid" data-bind="kendoGrid: { change: usersGridOptions.change, columns: usersGridOptions.columns, data: usersData, widget: usersGrid }, visible: showChat"></div>
 <div id="chatPanel" data-bind="visible: showChat">
     <div data-bind="visible: showTabs" id="chatTab" >
     </div>

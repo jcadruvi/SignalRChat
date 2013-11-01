@@ -11,6 +11,7 @@
     self.showName = ko.observable(true);
     self.showTabs = ko.observable(false);
     self.usersData = ko.observableArray();
+    self.usersGrid = ko.observable();
     self.usersGridOptions = {
         change: function () {
             addTab(this.dataItem(this.select()).Name);
@@ -30,20 +31,21 @@
                 encoded: false,
                 content: '<div style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;"></div>' +
                          '<input type="text" />' +
-                         '<input type="button" value="Send" />'
+                         '<input class="sendButton" type="button" value="Send" />'
             }]);
         } else {
             self.tabStrip.data("kendoTabStrip").insertBefore([{
-                text: this.dataItem(this.select()).Name,
+                text: self.usersGrid().dataItem(self.usersGrid().select()).Name,
                 encoded: false,
                 content: '<div style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;"></div>' +
                          '<input type="text" />' +
-                         '<input type="button" value="Send" />'
+                         '<input class="sendButton" type="button" value="Send" />'
             }],
             $(self.tabStrip.data("kendoTabStrip").items()[0]));
         }
         self.tabStrip.data("kendoTabStrip").select(0);
         self.showTabs(true);
+        alert($('.sendButton').length);
     };
 
     self.onSendClick = function () {
