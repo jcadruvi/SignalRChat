@@ -45,7 +45,9 @@
         }
         self.tabStrip.data("kendoTabStrip").select(0);
         self.showTabs(true);
-        alert($(self.tabStrip.data("kendoTabStrip").contentElement(0)).find('.sendButton').length);
+        $(self.tabStrip.data("kendoTabStrip").contentElement(0)).find('.sendButton').click(function () {
+
+        })
     };
 
     self.onSendClick = function () {
