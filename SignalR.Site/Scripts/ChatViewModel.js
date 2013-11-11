@@ -3,9 +3,7 @@
 
     var _connectionProxy = null;
 
-    self.content = ko.observable("");
-    self.message = ko.observable();
-    self.name = ko.observable();
+    self.name = ko.observable(null);
     self.tabStrip = null;
     self.showChat = ko.observable();
     self.showName = ko.observable(true);
@@ -51,10 +49,10 @@
         })
     };
 
-    self.onSendClick = function () {
-        _connectionProxy.invoke('sendMessage', self.name(), self.message());
-        self.message(null);
-    };
+    //self.onSendClick = function () {
+    //    _connectionProxy.invoke('sendMessage', self.name(), self.message());
+    //    self.message(null);
+    //};
 
     self.onLogInClick = function () {
         self.showChat(true);
@@ -62,7 +60,7 @@
         var connection = $.hubConnection();
         _connectionProxy = connection.createHubProxy('chatHub');
         _connectionProxy.on('sendMessage', function (name, message) {
-            self.content(self.content() + ("<div>" + name + ': ' + message + "</div>"));
+            //self.content(self.content() + ("<div>" + name + ': ' + message + "</div>"));
         });
         _connectionProxy.on('initializeUsers', function (users) {
             if (users.length === 1) {
