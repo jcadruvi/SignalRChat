@@ -31,9 +31,9 @@ namespace SignalR.Chat
             Clients.Others.addUser(new { user.Id, user.Name });
         }
 
-        public void SendMessage(string name, string message)
+        public void SendMessage(string name, string message, string connectionId)
         {
-            Clients.All.sendMessage(name, message);
+            Clients.Client(connectionId).sendMessage(name, message, connectionId);
         }
     }
 }

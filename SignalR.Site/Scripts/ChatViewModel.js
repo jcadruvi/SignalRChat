@@ -27,40 +27,35 @@
             self.tabStrip.data("kendoTabStrip").append([{
                 text: dataItem.Name,
                 encoded: false,
-                content: '<div style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;"></div>' +
-                         '<input type="text" />' +
+                content: '<div class="content" style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;"></div>' +
+                         '<input class="message" type="text" />' +
                          '<input class="sendButton" type="button" value="Send" />'
             }]);
         } else {
             self.tabStrip.data("kendoTabStrip").insertBefore([{
                 text: dataItem.Name,
                 encoded: false,
-                content: '<div style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;"></div>' +
-                         '<input type="text" />' +
+                content: '<div class="content" style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;"></div>' +
+                         '<input class="message" type="text" />' +
                          '<input class="sendButton" type="button" value="Send" />'
             }],
             $(self.tabStrip.data("kendoTabStrip").items()[0]));
         }
         self.tabStrip.data("kendoTabStrip").select(0);
         self.showTabs(true);
-        //alert('tabs = ' + self.tabStrip.data("kendoTabStrip").items().length + ';' + $(self.tabStrip.data("kendoTabStrip").contentElement(0)).find('.sendButton').length);
         $(self.tabStrip.data("kendoTabStrip").contentElement(0)).find('.sendButton').click(function () {
-
-        })
+            _connectionProxy.invoke('sendMessage', self.name(), $(this).parent().find('.message').val(), dataItem.Id);
+        });
     };
-
-    //self.onSendClick = function () {
-    //    _connectionProxy.invoke('sendMessage', self.name(), self.message());
-    //    self.message(null);
-    //};
 
     self.onLogInClick = function () {
         self.showChat(true);
         self.showName(false);
         var connection = $.hubConnection();
         _connectionProxy = connection.createHubProxy('chatHub');
-        _connectionProxy.on('sendMessage', function (name, message) {
-            //self.content(self.content() + ("<div>" + name + ': ' + message + "</div>"));
+        _connectionProxy.on('sendMessage', function (name, message, connectionId) {
+            var $content = $(self.tabStrip.data("kendoTabStrip").contentElement(0)).find('.content');
+            $content.html($content.html() + message);
         });
         _connectionProxy.on('initializeUsers', function (users) {
             if (users.length === 1) {
