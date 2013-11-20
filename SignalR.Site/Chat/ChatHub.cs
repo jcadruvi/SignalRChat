@@ -19,16 +19,10 @@ namespace SignalR.Chat
 
         public void AddUser(string name)
         {
-            var users = (from u in _userService.GetUsers()
-                         select new
-                         {
-                             u.Id,
-                             u.Name
-                         });
-            Clients.Caller.initializeUsers(users);
+            Clients.Caller.initializeUsers(_userService.GetUsers());
             User user = new User(Context.ConnectionId, Guid.NewGuid(), name);
             _userService.AddUser(user);
-            Clients.Others.addUser(new { user.Id, user.Name });
+            Clients.Others.addUser(new { user.ConnectionId, user.Id, user.Name });
         }
 
         public void SendMessage(string name, string message, string connectionId)

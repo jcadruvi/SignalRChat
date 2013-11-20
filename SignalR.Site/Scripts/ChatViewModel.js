@@ -44,7 +44,7 @@
         self.tabStrip.data("kendoTabStrip").select(0);
         self.showTabs(true);
         $(self.tabStrip.data("kendoTabStrip").contentElement(0)).find('.sendButton').click(function () {
-            _connectionProxy.invoke('sendMessage', self.name(), $(this).parent().find('.message').val(), dataItem.Id);
+            _connectionProxy.invoke('sendMessage', self.name(), $(this).parent().find('.message').val(), dataItem.ConnectionId);
         });
     };
 
