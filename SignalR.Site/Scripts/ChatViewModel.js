@@ -55,7 +55,7 @@
         _connectionProxy = connection.createHubProxy('chatHub');
         _connectionProxy.on('sendMessage', function (name, message, connectionId) {
             var $content = $(self.tabStrip.data("kendoTabStrip").contentElement(0)).find('.content');
-            $content.html($content.html() + message);
+            $content.html($content.html() + '<div>' + name + ': ' + message + '</div>');
         });
         _connectionProxy.on('initializeUsers', function (users) {
             if (users.length === 1) {
