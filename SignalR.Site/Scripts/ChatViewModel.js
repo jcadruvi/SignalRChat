@@ -44,7 +44,7 @@
         self.tabStrip.data("kendoTabStrip").select(0);
         self.showTabs(true);
         $(self.tabStrip.data("kendoTabStrip").contentElement(0)).find('.sendButton').click(function () {
-            _connectionProxy.invoke('sendMessage', self.name(), $(this).parent().find('.message').val(), dataItem.ConnectionId);
+            _connectionProxy.invoke('sendMessage', self.name(), $(this).parent().find('.message').val(), dataItem.ConnectionId, dataItem.Id);
         });
     };
 
@@ -53,8 +53,13 @@
         self.showName(false);
         var connection = $.hubConnection();
         _connectionProxy = connection.createHubProxy('chatHub');
-        _connectionProxy.on('sendMessage', function (name, message, connectionId) {
-            var $content = $(self.tabStrip.data("kendoTabStrip").contentElement(0)).find('.content');
+        _connectionProxy.on('sendMessage', function (name, message, connectionId, id) {
+            var $content, dataItem = {};
+            dataItem.Name = name;
+            dataItem.ConnectionId = connectionId;
+            dataItem.Id = id;
+            addTab(dataItem);
+            $content = $(self.tabStrip.data("kendoTabStrip").contentElement(0)).find('.content');
             $content.html($content.html() + '<div>' + name + ': ' + message + '</div>');
         });
         _connectionProxy.on('initializeUsers', function (users) {
