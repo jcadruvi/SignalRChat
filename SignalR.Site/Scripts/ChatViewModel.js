@@ -23,21 +23,21 @@
     };
 
     var addTab = function (dataItem) {
+        var content = '<div class="content" style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;"></div>' +
+                      '<input class="message" type="text" />' +
+                      '<input class="sendButton" type="button" value="Send" />' +
+                      '<input class="userId" type="hidden" value="' + dataItem.Id + '" />'
         if (self.tabStrip.data("kendoTabStrip").items().length == 0) {
             self.tabStrip.data("kendoTabStrip").append([{
                 text: dataItem.Name,
                 encoded: false,
-                content: '<div class="content" style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;"></div>' +
-                         '<input class="message" type="text" />' +
-                         '<input class="sendButton" type="button" value="Send" />'
+                content: content
             }]);
         } else {
             self.tabStrip.data("kendoTabStrip").insertBefore([{
                 text: dataItem.Name,
                 encoded: false,
-                content: '<div class="content" style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;"></div>' +
-                         '<input class="message" type="text" />' +
-                         '<input class="sendButton" type="button" value="Send" />'
+                content: content
             }],
             $(self.tabStrip.data("kendoTabStrip").items()[0]));
         }

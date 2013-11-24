@@ -14,6 +14,8 @@ Node links:
 	
 UI Notes:
 
+Remove the connection id string. Only send down the ID for security reasons.
+
 I should change the UI to use Bootstrap. The following are some notes:
 
 1) The chat area should use tabs with pills and badge. When you recieve a message the badge should flash read.
