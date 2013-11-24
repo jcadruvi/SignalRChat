@@ -37,7 +37,7 @@ namespace SignalR.Chat
             }
             if (!string.IsNullOrEmpty(connectionId))
             {
-                Clients.Client(connectionId).sendMessage(name, message, connectionId, id);
+                Clients.Client(connectionId).sendMessage(name, message, id);
             }
         }
     }

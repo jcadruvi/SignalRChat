@@ -14,12 +14,12 @@ Node links:
 	
 UI Notes:
 
-Remove the connection id string. Only send down the ID for security reasons.
-
 I should change the UI to use Bootstrap. The following are some notes:
 
 1) The chat area should use tabs with pills and badge. When you recieve a message the badge should flash read.
 2) When you recieve a message a pop ovrr with the message should show from the bottom right of the web page.
 3) The users section should change to a list group with badges. When you geta message badge should flash red.
 4) Look into having the tabs with a close button.
+	http://jeykeu.wordpress.com/2013/07/27/dynamically-add-remove-and-re-number-tabs-in-twitter-bootstrap/
+	http://junaidbaloch.com/backyard/bootstrap_add_rmove_tabs/
 5) Make the UI use angular js.
