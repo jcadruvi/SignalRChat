@@ -22,12 +22,23 @@ namespace SignalR.Chat
             Clients.Caller.initializeUsers(_userService.GetUsers());
             User user = new User(Context.ConnectionId, Guid.NewGuid(), name);
             _userService.AddUser(user);
-            Clients.Others.addUser(new { user.ConnectionId, user.Id, user.Name });
+            Clients.Others.addUser(new { user.Id, user.Name });
         }
 
-        public void SendMessage(string name, string message, string connectionId, string id)
+        public void SendMessage(string name, string message, Guid id)
         {
-            Clients.Client(connectionId).sendMessage(name, message, connectionId, id);
+            string connectionId = null;
+            var user = (from u in _userService.GetUsers()
+                        where u.Id == id
+                        select u);
+            if (user.Count<User>() > 0)
+            {
+                connectionId = user.First<User>().ConnectionId;
+            }
+            if (!string.IsNullOrEmpty(connectionId))
+            {
+                Clients.Client(connectionId).sendMessage(name, message, connectionId, id);
+            }
         }
     }
 }
