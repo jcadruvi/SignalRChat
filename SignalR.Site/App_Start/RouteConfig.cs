@@ -11,7 +11,6 @@ namespace SignalR
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-            routes.MapHubs();
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
