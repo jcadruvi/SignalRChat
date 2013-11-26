@@ -16,6 +16,7 @@
     </div>
 </div>
 
+@section scripts {
 <script src="~/Scripts/chatViewModel.js"></script>
 <script>
     var viewModel = chatViewModel();
@@ -36,3 +37,4 @@
     viewModel.tabStrip = $('#chatTab');
     ko.applyBindings(viewModel);
 </script>
+}

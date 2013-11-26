@@ -36,6 +36,7 @@ namespace SignalR.App_Start
 
             bundles.Add(new ScriptBundle("~/Scripts/layout.bundle.javascript")
                 .Include("~/Scripts/jquery-1.9.1.js",
+                         "~/Scripts/bootstrap.js",
                          "~/Scripts/knockout-2.2.1.min.js",
                          "~/Scripts/knockout.mapping-latest.js",
                          "~/Scripts/modernizr-2.6.2.js",
