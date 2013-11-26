@@ -26,6 +26,8 @@ namespace SignalR.App_Start
             bundles.Add(new StyleBundle("~/Content/layout.bundle.css")
                 .Include("~/Content/kendo.common.css",
 						 "~/Content/kendo.mobitor.css",
+                         "~/Content/Bootstrap/css/bootstrap.css",
+                         "~/Content/Bootstrap/css/bootstrap-theme.css",
                          "~/Content/Site.css"));
 
             var css = new Bundle("~/Content/chat.bundle.less")
