@@ -6,13 +6,34 @@
 
 @Styles.Render("~/Content/chat.bundle.less")
 
-<div data-bind="visible: showName">
-    <div>Please enter your name and then log in:</div>
-    <div><input data-bind="value: name" type="text" /><input data-bind="click: onLogInClick" type="button" value="Log In"/></div>
+<div class="col-md-2">
+    <div data-bind="visible: showName">
+        <div>Please enter your name and then log in:</div>
+        <div><input data-bind="value: name" type="text" /><input class="btn btn-default" data-bind="click: onLogInClick" type="button" value="Log In"/></div>
+    </div>
+    <ul class="list-group" data-bind="visible: !showName()">
+        <li class="list-group-item active">John Doe</li>
+        <li class="list-group-item">Jane Doe</li>
+    </ul>
 </div>
-<div id="chatGrid" data-bind="kendoGrid: { change: usersGridOptions.change, columns: usersGridOptions.columns, data: usersData, widget: usersGrid }, visible: showChat"></div>
-<div id="chatPanel" data-bind="visible: showChat">
-    <div data-bind="visible: showTabs" id="chatTab" >
+<div class="col-md-10" data-bind="visible: !showName()">
+    <div id="chatPanel">
+        <ul class="nav nav-pills" id="chatTab" >
+            <li class="active"><a href="#1">John Doe</a></li>
+            <li><a href="#2">Jane Doe</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="1">
+                <div class="content" style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;"></div>
+                <input class="message" type="text" />                     
+                <input class="sendButton" type="button" value="Send" />
+            </div>
+            <div class="tab-pane fade" id="2">
+                <div class="content" style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;"></div>
+                <input class="message" type="text" />                     
+                <input class="sendButton" type="button" value="Send" />
+            </div>
+        </div>
     </div>
 </div>
 
@@ -20,7 +41,7 @@
 <script src="~/Scripts/chatViewModel.js"></script>
 <script>
     var viewModel = chatViewModel();
-    $('#chatTab').kendoTabStrip({
+    /*$('#chatTab').kendoTabStrip({
         animation: {
             // fade-out current tab over 1000 milliseconds
             close: {
@@ -34,7 +55,7 @@
             }
         }
     });
-    viewModel.tabStrip = $('#chatTab');
+    viewModel.tabStrip = $('#chatTab');*/
     ko.applyBindings(viewModel);
 </script>
 }

@@ -22,7 +22,7 @@
             }]
     };
 
-    var addTab = function (dataItem) {
+    /*var addTab = function (dataItem) {
         var content = '<div class="content" style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;"></div>' +
                       '<input class="message" type="text" />' +
                       '<input class="sendButton" type="button" value="Send" />' +
@@ -46,7 +46,7 @@
         $(self.tabStrip.data("kendoTabStrip").contentElement(0)).find('.sendButton').click(function () {
             _connectionProxy.invoke('sendMessage', self.name(), $(this).parent().find('.message').val(), dataItem.Id);
         });
-    };
+    };*/
 
     self.onLogInClick = function () {
         self.showChat(true);
@@ -54,12 +54,12 @@
         var connection = $.hubConnection();
         _connectionProxy = connection.createHubProxy('chatHub');
         _connectionProxy.on('sendMessage', function (name, message, id) {
-            var $content, dataItem = {};
-            dataItem.Name = name;
-            dataItem.Id = id;
-            addTab(dataItem);
-            $content = $(self.tabStrip.data("kendoTabStrip").contentElement(0)).find('.content');
-            $content.html($content.html() + '<div>' + name + ': ' + message + '</div>');
+            //var $content, dataItem = {};
+            //dataItem.Name = name;
+            //dataItem.Id = id;
+            //addTab(dataItem);
+            //$content = $(self.tabStrip.data("kendoTabStrip").contentElement(0)).find('.content');
+            //$content.html($content.html() + '<div>' + name + ': ' + message + '</div>');
         });
         _connectionProxy.on('initializeUsers', function (users) {
             if (users.length === 1) {
