@@ -1,24 +1,8 @@
 ﻿var chatApp = angular.module('chatApp', []);
 
-chatApp.controller('ChatController', function ($scope) {
+chatApp.controller('ChatController', function ($scope, chatService) {
 
-    $scope.users = [
-      {
-          'name': 'John Doe',
-          'selected': true
-      },
-      {
-          'name': 'Jane Doe'
-      },
-      {
-          'name': 'Fred Smith'
-      }
-    ];
+    $scope.users = chatService.users;
 
-    $scope.selectUser = function (user) {
-        for (var i = 0; i < $scope.users.length; i++) {
-            $scope.users[i].selected = false;
-        }
-        user.selected = true;
-    };
+    $scope.selectUser = chatService.selectUser;
 });
