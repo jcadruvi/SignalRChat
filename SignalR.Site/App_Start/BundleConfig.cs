@@ -40,6 +40,7 @@ namespace SignalR.App_Start
                 .Include("~/Scripts/jquery-1.9.1.js",
                          "~/Scripts/angular.min.js",
                          "~/Scripts/bootstrap.js",
+                         "~/Scripts/ChatController.js",
                          "~/Scripts/knockout-2.2.1.min.js",
                          "~/Scripts/knockout.mapping-latest.js",
                          "~/Scripts/modernizr-2.6.2.js",

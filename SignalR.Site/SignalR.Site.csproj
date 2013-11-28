@@ -246,6 +246,7 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\ChatController.js" />
     <Content Include="Scripts\chatViewModel.js" />
     <Content Include="Content\Bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\Bootstrap\fonts\glyphicons-halflings-regular.ttf" />

@@ -6,32 +6,34 @@
 
 @Styles.Render("~/Content/chat.bundle.less")
 
-<div class="col-md-2">
-    <div data-bind="visible: showName">
-        <div>Please enter your name and then log in:</div>
-        <div><input data-bind="value: name" type="text" /><input class="btn btn-default" data-bind="click: onLogInClick" type="button" value="Log In"/></div>
-    </div>
-    <ul class="list-group" data-bind="visible: !showName()">
-        <li class="list-group-item active">John Doe</li>
-        <li class="list-group-item">Jane Doe</li>
-    </ul>
-</div>
-<div class="col-md-10" data-bind="visible: !showName()">
-    <div id="chatPanel">
-        <ul class="nav nav-pills" id="chatTab" >
-            <li class="active"><a href="#1">John Doe</a></li>
-            <li><a href="#2">Jane Doe</a></li>
+<div ng-controller="ChatController">
+    <div class="col-md-2">
+        <div data-bind="visible: showName">
+            <div>Please enter your name and then log in:</div>
+            <div>
+                <input data-bind="value: name" type="text" /><input class="btn btn-default" data-bind="click: onLogInClick" type="button" value="Log In" /></div>
+        </div>
+        <ul class="list-group" data-bind="visible: !showName()">
+            <li class="list-group-item" ng-repeat="user in users"> {{user.name}} </li>
         </ul>
-        <div class="tab-content">
-            <div class="tab-pane fade in active" id="1">
-                <div class="content" style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;"></div>
-                <input class="message" type="text" />                     
-                <input class="sendButton" type="button" value="Send" />
-            </div>
-            <div class="tab-pane fade" id="2">
-                <div class="content" style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;"></div>
-                <input class="message" type="text" />                     
-                <input class="sendButton" type="button" value="Send" />
+    </div>
+    <div class="col-md-10" data-bind="visible: !showName()">
+        <div id="chatPanel">
+            <ul class="nav nav-pills" id="chatTab">
+                <li class="active"><a href="#1">John Doe</a></li>
+                <li><a href="#2">Jane Doe</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="1">
+                    <div class="content" style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;"></div>
+                    <input class="message" type="text" />
+                    <input class="sendButton" type="button" value="Send" />
+                </div>
+                <div class="tab-pane fade" id="2">
+                    <div class="content" style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;"></div>
+                    <input class="message" type="text" />
+                    <input class="sendButton" type="button" value="Send" />
+                </div>
             </div>
         </div>
     </div>

@@ -1,18 +1,18 @@
 ﻿@using System.Web.Optimization
 <!DOCTYPE html>
-<html>
+<html ng-app="chatApp">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/layout.bundle.css")
+    @Scripts.Render("~/Scripts/layout.bundle.javascript")
 </head>
 <body>
     <header>
     </header>
     @RenderBody()
 
-    @Scripts.Render("~/Scripts/layout.bundle.javascript")
     @RenderSection("scripts", required: false)
 </body>
 </html>
