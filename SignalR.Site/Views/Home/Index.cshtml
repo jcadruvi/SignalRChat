@@ -14,7 +14,7 @@
                 <input data-bind="value: name" type="text" /><input class="btn btn-default" data-bind="click: onLogInClick" type="button" value="Log In" /></div>
         </div>
         <ul class="list-group" data-bind="visible: !showName()">
-            <li class="list-group-item" ng-repeat="user in users"> {{user.name}} </li>
+            <li class="list-group-item" ng-repeat="user in users" ng-class="{active: user.selected}" ng-click="selectUser(user)"> {{user.name}} </li>
         </ul>
     </div>
     <div class="col-md-10" data-bind="visible: !showName()">
