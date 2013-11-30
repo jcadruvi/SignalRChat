@@ -1,16 +1,20 @@
 ﻿chatApp.factory('chatService', ['$http', function ($http) {
+
+    var selectedUsers = users;
     var users = [
     {
-        'name': 'John Doe',
-        'selected': true
+        id: 1,
+        name: 'John Doe',
+        selected: true
     },
     {
-        'name': 'Jane Doe'
+        id: 2,
+        name: 'Jane Doe'
     },
     {
-        'name': 'Fred Smith'
+        id: 3,
+        name: 'Fred Smith'
     }];
-
     return {
         addUser: function(user) {
 
@@ -20,6 +24,7 @@
                 users[i].selected = false;
             }
             user.selected = true;
+            selectedUsers.push(user);
         },
         users: users
     };
