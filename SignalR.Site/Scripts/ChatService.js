@@ -1,8 +1,6 @@
 ﻿chatApp.factory('chatService', ['$http', function ($http) {
-
-    var selectedUsers = users;
-    var users = [
-    {
+    var selectedUsers = [];
+    var users = [{
         id: 1,
         name: 'John Doe',
         selected: true
@@ -19,12 +17,23 @@
         addUser: function(user) {
 
         },
+        selectedUsers: selectedUsers,
         selectUser: function (user) {
+            var alreadySelected = false;
             for (var i = 0; i < users.length; i++) {
                 users[i].selected = false;
             }
             user.selected = true;
-            selectedUsers.push(user);
+            for (var j = 0; j < selectedUsers.length; j++) {
+                selectedUsers[j].selected = false;
+                if (user.id === selectedUsers[j].id) {
+                    selectedUsers[j].selected = true;
+                    alreadySelected = true;
+                }
+            }
+            if (!alreadySelected) {
+                selectedUsers.push(user);
+            }
         },
         users: users
     };

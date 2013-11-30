@@ -21,10 +21,10 @@
         <div class="col-md-10" data-bind="visible: !showName()">
             <div id="chatPanel">
                 <ul class="nav nav-pills" id="chatTab">
-                    <li data-ng-repeat="user in users" data-ng-class="{active: user.selected}"><a href="#{{user.id}}">{{user.name}}</a></li>
+                    <li data-ng-repeat="user in selectedUsers" data-ng-class="{active: user.selected}"><a href="#{{user.id}}">{{user.name}}</a></li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane fade in" data-ng-repeat="user in users" id="{{user.id}}" data-ng-class="{active: user.selected}"> 
+                    <div class="tab-pane fade in" data-ng-repeat="user in selectedUsers" id="{{user.id}}" data-ng-class="{active: user.selected}"> 
                         <div>{{user.name}}</div>                       
                         <div class="content" style="width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;"></div>
                         <input class="message" type="text" />
