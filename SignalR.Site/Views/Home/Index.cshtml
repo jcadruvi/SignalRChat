@@ -45,21 +45,6 @@
 <script src="~/Scripts/chatViewModel.js"></script>
 <script>
     var viewModel = chatViewModel();
-    /*$('#chatTab').kendoTabStrip({
-        animation: {
-            // fade-out current tab over 1000 milliseconds
-            close: {
-                duration: 1000,
-                effects: "fadeOut"
-            },
-            // fade-in new tab over 500 milliseconds
-            open: {
-                duration: 500,
-                effects: "fadeIn"
-            }
-        }
-    });
-    viewModel.tabStrip = $('#chatTab');*/
     ko.applyBindings(viewModel);
 </script>
 }

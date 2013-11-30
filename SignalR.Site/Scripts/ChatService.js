@@ -12,6 +12,9 @@
     }];
 
     return {
+        addUser: function(user) {
+
+        },
         selectUser: function (user) {
             for (var i = 0; i < users.length; i++) {
                 users[i].selected = false;
