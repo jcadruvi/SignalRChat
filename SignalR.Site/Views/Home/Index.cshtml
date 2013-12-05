@@ -8,20 +8,20 @@
 <div class="container">
     <div class="row" ng-controller="ChatController">
         <div class="col-md-2">
-            <div data-bind="visible: showName">
+            <div data-ng-hide="showChatPage">
                 <div>Please enter your name and then log in:</div>
                 <div>
-                    <input data-bind="value: name" type="text" /><input class="btn btn-default" data-bind="    click: onLogInClick" type="button" value="Log In" />
+                    <input data-bind="value: name" type="text" /><input class="btn btn-default" data-ng-click="onLogInClick()" type="button" value="Log In" />
                 </div>
             </div>
-            <div class="panel panel-default" data-bind="visible: !showName()">
+            <div class="panel panel-default" data-ng-show="showChatPage">
                 <div class="panel-heading">Select a user</div>
                 <ul class="list-group">
                     <li class="list-group-item" data-ng-repeat="user in users" data-ng-class="{active: user.selected}" data-ng-click="selectUser(user)">{{user.name}} </li>
                 </ul>
             </div>
         </div>
-        <div class="col-md-10" data-bind="visible: !showName()">
+        <div class="col-md-10" data-ng-show="showChatPage">
             <div id="chatPanel">
                 <ul class="nav nav-pills" id="chatTab">
                     <li data-ng-repeat="user in selectedUsers" data-ng-class="{active: user.selected}"><a href="#{{user.id}}">{{user.name}}</a></li>

@@ -1,5 +1,30 @@
 ﻿chatApp.factory('chatService', ['$http', function ($http) {
+    var connection = $.hubConnection();
+    var connectionProxy = connection.createHubProxy('chatHub');
+    connectionProxy.on('sendMessage', function (name, message, id) {
+        //var $content, dataItem = {};
+        //dataItem.Name = name;
+        //dataItem.Id = id;
+        //addTab(dataItem);
+        //$content = $(self.tabStrip.data("kendoTabStrip").contentElement(0)).find('.content');
+        //$content.html($content.html() + '<div>' + name + ': ' + message + '</div>');
+    });
+    connectionProxy.on('initializeUsers', function (users) {
+        if (users.length === 1) {
+            self.usersData.push(users);
+        }
+        else if (users.length > 1) {
+            self.usersData(users);
+        }
+    });
+    connectionProxy.on('addUser', function (user) {
+        self.usersData.push(user);
+    });
+    connection.start().done(function () {
+        connectionProxy.invoke('addUser', self.name());
+    });
     var selectedUsers = [];
+    var showChatPage = false;
     var users = [{
         id: 1,
         name: 'John Doe'
@@ -15,6 +40,9 @@
     return {
         addUser: function(user) {
 
+        },
+        onLogInClick: function () {
+            showChatPage = true;
         },
         selectedUsers: selectedUsers,
         selectUser: function (user) {
@@ -34,6 +62,7 @@
                 selectedUsers.push(user);
             }
         },
+        showChatPage: showChatPage,
         users: users
     };
 }]);
