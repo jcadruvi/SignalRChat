@@ -2,8 +2,7 @@
     var selectedUsers = [];
     var users = [{
         id: 1,
-        name: 'John Doe',
-        selected: true
+        name: 'John Doe'
     },
     {
         id: 2,
