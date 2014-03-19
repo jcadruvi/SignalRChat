@@ -12,9 +12,9 @@ namespace SignalR.Chat
     {
         private IUserService _userService;
         
-        public ChatHub()
+        public ChatHub(IUserService userService)
         {
-            _userService = new UserService();
+            _userService = userService;
         }
 
         public void AddUser(string name)

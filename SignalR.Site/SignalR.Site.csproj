@@ -160,6 +160,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\LessTransform.cs" />
+    <Compile Include="App_Start\MvcHubActivator.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Chat\ChatHub.cs" />

@@ -10,6 +10,7 @@ namespace SignalR.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using SignalR.Services;
 
     public static class NinjectWebCommon 
     {
@@ -53,6 +54,7 @@ namespace SignalR.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<IUserService>().To<UserService>().InSingletonScope();
         }        
     }
 }
