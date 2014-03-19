@@ -29,7 +29,13 @@ I should change the UI to use Bootstrap. The following are some notes:
 	http://junaidbaloch.com/backyard/bootstrap_add_rmove_tabs/
 5) Make the UI use angular js.
 
-
+Need to modify the ChatController:
+	Make it start with lower c.
+	Map the service properly.
+	
+Need to modify the ChatService:
+	Make it start with lower c.
+	
 
 Client:
 	Talk about the signalRService.
