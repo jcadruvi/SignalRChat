@@ -28,3 +28,15 @@ I should change the UI to use Bootstrap. The following are some notes:
 	http://jeykeu.wordpress.com/2013/07/27/dynamically-add-remove-and-re-number-tabs-in-twitter-bootstrap/
 	http://junaidbaloch.com/backyard/bootstrap_add_rmove_tabs/
 5) Make the UI use angular js.
+
+
+
+Client:
+	Talk about the signalRService.
+
+Server:
+
+Talk about Dependency Injection for SignalR.
+	Must be singleton
+	Hub Activator.
+	
